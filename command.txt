@@ -1,0 +1,5 @@
+SELECT * FROM orders LIMIT 10; - Shows latest orders
+SELECT COUNT(*) as total_orders, shipCountry FROM orders GROUP BY shipCountry ORDER BY total_orders DESC LIMIT 5; - Top 5 countries by order count
+SELECT customerID, COUNT(*) as order_count FROM orders GROUP BY customerID ORDER BY order_count DESC LIMIT 5; - Top 5 customers
+SELECT YEAR(orderDate) as year, COUNT(*) as orders FROM orders GROUP BY year ORDER BY year; - Orders by year
+SELECT shipCity, COUNT(*) as orders FROM orders WHERE shipCountry = 'USA' GROUP BY shipCity ORDER BY orders DESC LIMIT 5; - Top 5 US cities
