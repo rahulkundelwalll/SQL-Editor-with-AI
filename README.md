@@ -45,7 +45,7 @@ This project is a **SQL Editor with AI Assistance**, built using **React** and *
 
 ### Root Files
 
-- **`.env`**: Environment variables for sensitive data like API keys.
+- **`.env`**: Environment variables for sensitive data like API keys {VITE_API_KEY=xyz-gemini-api-key}.
 - **`.gitignore`**: Specifies files and directories to be ignored by Git.
 - **`Atlan Frontend Internship Task 2025.pdf`**: A PDF document, possibly containing task details.
 - **`command.txt`**: Contains predefined SQL queries and their descriptions.
@@ -114,10 +114,6 @@ This project is a **SQL Editor with AI Assistance**, built using **React** and *
 - Implements the AI-powered SQL assistant using Google Generative AI.
 - Displays a chat interface for user interaction.
 
-#### `ComponentD.jsx`
-
-- A placeholder component with minimal functionality.
-
 #### `styles.css`
 
 - Contains styles for various components, including buttons, the SQL editor, and the SQL Copilot.
@@ -135,6 +131,12 @@ This project is a **SQL Editor with AI Assistance**, built using **React** and *
 ## How to Run the Project
 
 1. **Install Dependencies**:
+
    ```bash
    npm install
+   ```
+
+   ```bash
+   npm run dev
+   ``
    ```
