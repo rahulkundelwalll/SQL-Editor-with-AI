@@ -138,5 +138,13 @@ This project is a **SQL Editor with AI Assistance**, built using **React** and *
 
    ```bash
    npm run dev
-   ``
    ```
+
+Predefined query :
+  ```bash
+SELECT * FROM orders LIMIT 10;
+SELECT COUNT(*) as total_orders, shipCountry FROM orders GROUP BY shipCountry ORDER BY total_orders DESC LIMIT 5;
+SELECT customerID, COUNT(*) as order_count FROM orders GROUP BY customerID ORDER BY order_count DESC LIMIT 5; 
+SELECT YEAR(orderDate) as year, COUNT(*) as orders FROM orders GROUP BY year ORDER BY year; 
+SELECT shipCity, COUNT(*) as orders FROM orders WHERE shipCountry = 'USA' GROUP BY shipCity ORDER BY orders DESC LIMIT 5;
+  ```
