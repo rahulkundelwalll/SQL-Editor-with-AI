@@ -128,6 +128,93 @@ This project is a **SQL Editor with AI Assistance**, built using **React** and *
 
 ---
 
+## ER Diagram
+
+```mermaid
+erDiagram
+    SQLEditor ||--o{ Query : "executes"
+    SQLEditor ||--|| DatabaseConnection : "connects to"
+    DatabaseConnection ||--o{ DatabaseSchema : "describes"
+    DatabaseSchema ||--o{ Table : "contains"
+    Table ||--o{ Column : "has"
+    SQLCopilot ||--o{ Query : "generates"
+    User ||--|{ Query : "writes"
+    User ||--o{ DatabaseConnection : "configures"
+
+    Query {
+        string sql_text
+        datetime created_at
+        boolean is_saved
+        string result
+    }
+
+    DatabaseConnection {
+        string host
+        int port
+        string username
+        string password
+        string database_name
+        string pem_key
+    }
+
+    DatabaseSchema {
+        string name
+        int table_count
+        int total_columns
+        int relationships
+    }
+
+    Table {
+        string name
+        int column_count
+        string primary_key
+        string[] foreign_keys
+    }
+
+    Column {
+        string name
+        string data_type
+        boolean is_nullable
+        boolean is_primary_key
+        boolean is_foreign_key
+        string references
+    }
+
+    User {
+        string id
+        string preferences
+        datetime last_activity
+    }
+
+    SQLCopilot {
+        string prompt
+        string generated_sql
+        datetime timestamp
+    }
+```
+
+The ER diagram above illustrates the relationships between different components of the SQL Editor application:
+
+- **SQLEditor**: The main component that handles query execution
+- **DatabaseConnection**: Manages database connectivity settings
+- **DatabaseSchema**: Represents the structure of the connected database
+- **Table**: Database tables with their properties
+- **Column**: Individual columns within tables
+- **Query**: SQL queries written or generated
+- **User**: Application users and their preferences
+- **SQLCopilot**: AI component for query generation
+
+Key Relationships:
+
+- SQLEditor executes multiple Queries
+- Each DatabaseConnection describes one or more DatabaseSchemas
+- Each DatabaseSchema contains multiple Tables
+- Each Table has multiple Columns
+- SQLCopilot can generate multiple Queries
+- Users can write multiple Queries and configure multiple DatabaseConnections
+
+---
+
 ## How to Run the Project
 
 1. **Install Dependencies**:
@@ -141,10 +228,11 @@ This project is a **SQL Editor with AI Assistance**, built using **React** and *
    ```
 
 Predefined query :
-  ```bash
+
+```bash
 SELECT * FROM orders LIMIT 10;
 SELECT COUNT(*) as total_orders, shipCountry FROM orders GROUP BY shipCountry ORDER BY total_orders DESC LIMIT 5;
-SELECT customerID, COUNT(*) as order_count FROM orders GROUP BY customerID ORDER BY order_count DESC LIMIT 5; 
-SELECT YEAR(orderDate) as year, COUNT(*) as orders FROM orders GROUP BY year ORDER BY year; 
+SELECT customerID, COUNT(*) as order_count FROM orders GROUP BY customerID ORDER BY order_count DESC LIMIT 5;
+SELECT YEAR(orderDate) as year, COUNT(*) as orders FROM orders GROUP BY year ORDER BY year;
 SELECT shipCity, COUNT(*) as orders FROM orders WHERE shipCountry = 'USA' GROUP BY shipCity ORDER BY orders DESC LIMIT 5;
-  ```
+```
