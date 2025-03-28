@@ -1,9 +1,9 @@
 import React from "react";
 import { Box } from "@mui/material";
-import ComponentA from "./ComponentA";
-import ComponentB from "./ComponentB";
-import ComponentC from "./ComponentC";
-import ComponentE from "./ComponentE";
+import Header from "./Header";
+import DatabaseExplorer from "./DatabaseExplorer";
+import SQLEditor from "./SQLEditor";
+import SQLCopilot from "./SQLCopilot";
 import { SQLEditorProvider } from '../context/SQLEditorContext';
 
 const MainLayout = () => {
@@ -20,7 +20,7 @@ const MainLayout = () => {
       >
         {/* Header - Fixed height */}
         <Box sx={{ flexShrink: 0 }}>
-          <ComponentA />
+          <Header />
         </Box>
 
         {/* Main Content Area - Fills remaining space */}
@@ -39,7 +39,7 @@ const MainLayout = () => {
               overflow: "auto",
             }}
           >
-            <ComponentB />
+            <DatabaseExplorer />
           </Box>
 
           {/* Middle Section - Fills remaining width */}
@@ -51,7 +51,7 @@ const MainLayout = () => {
               flexDirection: "column",
             }}
           >
-            <ComponentC />
+            <SQLEditor />
           </Box>
 
           {/* Right Sidebar - Fixed width, scrollable */}
@@ -62,7 +62,7 @@ const MainLayout = () => {
               overflow: "auto",
             }}
           >
-            <ComponentE />
+            <SQLCopilot />
           </Box>
         </Box>
       </Box>
